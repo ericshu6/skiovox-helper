@@ -11,7 +11,7 @@ const SETTINGS_URL = "chrome://settings";
 const NEW_TAB_URL = "chrome://new-tab-page";
 const FILES_URL = "chrome://file-manager";
 const HELP_URL = "https://github.com/bypassiwastaken/skiovox-helper";
-const WEBSTORE_URL = "https://chromewebstore.google.com";
+const WEBSTORE_URL = "chrome://extensions";
 const ADDSESSION_URL = "https://accounts.google.com/signin/v2/identifier?hl=en&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAlAmgQ&flowName=GlifWebSignIn&flowEntry=AddSession";
 
 let [
@@ -37,30 +37,30 @@ let battery = document.querySelector('.battery')
 version.textContent = "v" + chrome.runtime.getManifest().version
 
 wifi.addEventListener('click', () => {
-    chrome.tabs.create({ url: WIFI_URL })
+    chrome.tabs.update({ url: WIFI_URL })
 })
 
 bluetooth.addEventListener('click', () => {
-    chrome.tabs.create({ url: BLUETOOTH_URL })
+    chrome.tabs.update({ url: BLUETOOTH_URL })
 })
 
 settings.addEventListener('click', () => {
-    chrome.tabs.create({ url: SETTINGS_URL })
+    chrome.tabs.update({ url: SETTINGS_URL })
 })
 
 theme.addEventListener('click', () => {
     alert("The original New Tab page will now open. On that page, click the edit icon in the bottom right corner to edit your browser theme.")
-    chrome.tabs.create({ url: NEW_TAB_URL })
+    chrome.tabs.update({ url: NEW_TAB_URL })
 })
 
 files.addEventListener('click', () => {
-    chrome.tabs.create({}, (tab) => {
+    chrome.tabs.update({}, (tab) => {
         chrome.tabs.update(tab.id, { url: FILES_URL })
     })
 })
 
 help.addEventListener('click', () => {
-    chrome.tabs.create({ url: HELP_URL })
+    chrome.tabs.update({ url: HELP_URL })
 })
 
 webStore.addEventListener('click', () => {
@@ -69,11 +69,11 @@ webStore.addEventListener('click', () => {
         alert("This web store may not supported by your version");
     }
 
-    chrome.tabs.create({ url: WEBSTORE_URL })
+    chrome.tabs.update({ url: WEBSTORE_URL })
 })
 
 addAccount.addEventListener('click', () => {
-    chrome.tabs.create({ url: ADDSESSION_URL })
+    chrome.tabs.update({ url: ADDSESSION_URL })
 })
 
 reset.addEventListener('click', () => {
