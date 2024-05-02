@@ -5,7 +5,7 @@ import { DateDisplay } from "./date-display.js";
 import { TimeDisplay } from "./time-display.js";
 import { BackgroundController } from "./background-controller.js";
 
-const WIFI_URL = "chrome://network/#select";
+const WIFI_URL = "chrome://os-settings/networks?type=WiFi";
 const BLUETOOTH_URL = "chrome://bluetooth-pairing";
 const SETTINGS_URL = "chrome://settings";
 const NEW_TAB_URL = "chrome://new-tab-page";
@@ -60,7 +60,9 @@ files.addEventListener('click', () => {
 })
 
 help.addEventListener('click', () => {
-    chrome.tabs.update({ url: HELP_URL })
+    chrome.tabs.create({ url: "https://app.todoist.com/app/inbox", pinned: true })
+    chrome.tabs.create({ url: "https://track.toggl.com/timer", pinned: true })
+    chrome.tabs.create({ url: "https://docs.google.com/spreadsheets/d/1ujsnLFUMQCpyND8PYUr_vCblBaf4aLpMoyJvfRFx-cU/edit#gid=33385908", pinned: true })
 })
 
 webStore.addEventListener('click', () => {
